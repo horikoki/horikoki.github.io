@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="sotsusei.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.4/css/all.css">
+    <div id="page_top"><a href="#"></a></div>
+
+    <title>卒業制作</title>
+</head>
+
+<body class ="">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-info">
+            <a href="sotsusei.html" class="navbar-brand">卒業制作2022 (堀向希)</a>
+        </nav>
+    </header>
+        
+    <div class="container">
+        <div class=row>
+            <div class="col-md-8">
+                <div class="mt-4">
+                    <h1>はじめに</h1>
+                    <img src= >
+                    <p>
+                    　このさいとでは卒業制作についてまとめていきます。制作したものは、インスタグラムAPIを用いてスプレッドシートにインサイトデータを自動入力するものです。
+                    </p>
+                </div>
+                <div class="mt-4">   
+                    <h2 id="anker1">作成した理由</h2>
+                    <p>
+                    　友達がインスタグラムのビジネスアカウントを運営していて、そのデータをスプレッドシートに入力する手伝いをしていました。どんな手伝いをしていたかというと、
+                    </p> 
+                    <a href="images/スクリーンショット 2022-01-17 210359.png" data-lightbox="group"><img class="img-fluid" src="images/スクリーンショット 2022-01-17 210359.png"></a>
+                    <p>
+                    　この空白のシートに
+                    </p>
+                    <a href="images/スクリーンショット 2022-01-17 210748.png" data-lightbox="group"><img class="img-fluid" src="images/スクリーンショット 2022-01-17 210748.png"></a>
+                    <p>
+                    こんな感じで数値を記入していきます。1年半ほどこの手伝い続けていますが、段々と改善したい点がでてきました。
+                    </p>
+                    <ul>
+                        <li>時間がかかる</li>
+                        <li>手入力するためミスが起こる</li>
+                        <li>データを入力する時間によって、数値に差ができる</li>
+                    </ul>
+                    <p>
+                    これらの問題を解決するために、今回のインスタグラムAPIを用いてスプレッドシートにインサイトデータを自動入力するものを作ろうと思いました。
+                    </p>
+                </div>
+                <div class="mt-4">
+                    <h2 id = "anker2">作成方法</h2>
+                    <div>
+                        <h3 class = "mt-4" id="anker21">①ビジネスアカウントの作成</h3>
+                        <p>　まずはインスタグラムアカウントを作成し、ビジネスアカウントに切り替えます。右が今回作成したビジネスアカウントです。</p>
+                        <a href="images/アートボード 1.png" data-lightbox="group"><img class="img-fluid" src = "images/アートボード 1.png"></a>
+                        <p>左は普段使っている個人アカウントですが、右のビジネスアカウントにはインサイトが追加されていることがわかります。インサイトのページは下の画像のようになっています。</p>
+                        <a href="images/アートボード 2.png" data-lightbox="group"><img class="img-fluid" src = "images/アートボード 2.png"></a>
+                        <p>　インサイトのページでは、期間ごとのフォロワーの推移や、何人が自分の投稿を見たか確認することができます。下記表は用語について簡単にまとめたものになります。</p>
+                        <ul>
+                            <li>リーチ　→　アカウントの投稿を見たユーザーの数</li>
+                            <li>インプレッション　→　投稿がタイムラインに表示された数</li>
+                            <li>コンテンツでのインタラクション　→　投稿にされたコメントやいいねの数</li>                     
+                        </ul>
+                        <h3 class = "mt-5" id="anker22">②Facebookアプリの作成</h3>
+                        <p>
+                        　次にFacebookページを作り、さきほど作ったインスタグラムのアカウントと連携します。その後、Facebook管理者ツールでFacebookアプリを作成します。作成したアプリはこんな感じです。
+                        </p>
+                        <a href="images/スクリーンショット 2022-01-20 041935.png" data-lightbox="group"><img class="img-fluid" src ="images/スクリーンショット 2022-01-20 041935.png"></a>
+                        <p>
+                        　赤い丸で囲まれた「sample_MT03」が今回作成したFacebookアプリです。続いて、グラフAPIエクスプローラを開き、アクセストークンを取得していきます。有効期限無制限のアクセストークンを取得後、InstagramビジネスアカウントIDを取得します。下記参考サイトに詳しい方法が書いてあります。
+                        </p>    
+                        <div class="d-flex position-relative bg-light mt-5 mb-5">
+                            <img src="https://navymobile.co.jp/wp/wp-content/uploads/2019/11/instagram_graph_api_1600-1200x675.jpg" alt="thumnail" class="flex-shrink-0 me-3" width="30%" height="30%">
+                            <div>
+                              <h5 class="mt-0">Instagram Graph APIの使い方とサイトに埋め込む方法  v5.0対応【2020年3月最新版】</h5>
+
+                              <a href="https://navymobile.co.jp/instagram-graph-api" class="stretched-link" target="_blank">リンク</a>
+                            </div>
+                        </div>
+                        <h3 class = "mt-4" id="anker23">③Google Apps Scriptでスクリプトを記述する</h3>
+                        <p>
+                        　まずAPIのデータを保存するためのGoogleスプレッドシートを用意します。
+                        </p>
+                        <a href="images/アートボード 3.png" data-lightbox="group"><img class="img-fluid" src = "images/アートボード 3.png"></a>
+                        <p>
+                        　今回は「Follower」、「Contents」、「Contents_week」の3枚のシートを用意しました。つぎにそれぞれのスクリプトを記述します。
+                        </p>
+                        <h4 class = "mt-5">「Follower」用のスクリプト</h4>
+                        <p>
+                        　下記参考サイトを参考にして作りました。このスクリプトは、現在のフォロワーの数、フォロー数、投稿の数を取得、保存することができます。コードは参考サイト様とまったく同じなのでこのサイトには貼り付けていません。
+                        </p>
+                        <div class="d-flex position-relative bg-light mt-5 mb-5">
+                            <img src="https://yamatk12.net/wp-content/uploads/2021/05/instagram%E3%82%AD%E3%83%A3%E3%83%83%E3%83%81.jpg" alt="thumnail" class="flex-shrink-0 me-3" width="30%" height="30%">
+                            <div>
+                              <h5 class="mt-0">InstagramのインサイトデータをGoogle スプレッドシートに自動で登録する方法【API使用】</h5>
+
+                              <a href="https://yamatk12.net/instagram-to-googless/" class="stretched-link" target="_blank">リンク</a>
+                            </div>
+                        </div>
+
+                        <h4>「Contents」用のスクリプト</h4>
+                        <p>
+                            　このスクリプトは、リーチ数、インプレッション数、プロフィール閲覧数、webサイトリンククリック数、SMSリンククリック数、コールリンククリック数、メールリンククリック数を取得、保存できます。下記サイトを参考にして、項目を追加しました。
+                        </p>
+
+<div class="hcb_wrap"><pre class="prism line-numbers lang-js" data-lang="JavaScript"><code> 
+function insight_reporting(){
+var date = new Date();
+
+
+//instagram数値記録用のスプレットシートID
+var SSId = &#39;【スプレッドシートのURL】&#39;;
+
+
+//instagram Graph API 必要情報
+var instragramID = &#39;【ビジネスID（数字）】&#39;;
+var username = &#39;【インスタのID】&#39;;
+var ACCESS_TOKEN = &quot;【アクセストークン】&quot;;
+getInsight(date,SSId,instragramID,username,ACCESS_TOKEN);
+}
+
+
+//instagramの数値を引っ張り記録する関数
+function getInsight(date,SSId,instragramID,username,ACCESS_TOKEN) {
+
+
+var mySS = SpreadsheetApp.openById(SSId); //IDでスプレッドシートを開く
+var sheetName = &#39;Contents&#39;; //スプレッドシートのContentsのシートを参照
+var sheet = mySS.getSheetByName(sheetName);
+
+
+//日付を取得して1日前に戻す
+var today = Utilities.formatDate(date, &#39;Tokyo/Asia&#39;, &#39;yyyy/MM/dd&#39;);
+
+
+//現在の「日」を取得
+var day = date.getDate();
+
+
+//前日日付にしたいので-1する
+date.setDate(day-1);
+
+
+//日付の表示形式を整形する
+var yesterday = Utilities.formatDate(date, &#39;JST&#39;, &#39;yyyy/MM/dd&#39;);
+
+
+var facebook_url = &#39;https://graph.facebook.com/v12.0/&#39;+ instragramID +&#39;/insights?metric=reach,impressions,profile_views,website_clicks,text_message_clicks,phone_call_clicks,email_contacts&period=day&access_token=&#39;+ ACCESS_TOKEN;;
+
+
+var encodedURI = encodeURI(facebook_url);
+var response = UrlFetchApp.fetch(encodedURI); //URLから情報を取得
+var jsonData = JSON.parse(response);//JSONデータをパース
+var reach = jsonData.data[0].values[1].value;
+var impressions = jsonData.data[1].values[1].value;
+var profile_views = jsonData.data[2].values[1].value;
+var website_clicks = jsonData.data[3].values[1].value;
+var text_message_clicks = jsonData.data[4].values[1].value;
+var phone_call_clicks = jsonData.data[5].values[1].value;   
+var email_contacts = jsonData.data[6].values[1].value;
+
+//シートにデータを追加またはアップデート
+var newData =[yesterday,reach,impressions,profile_views,website_clicks,text_message_clicks,phone_call_clicks,email_contacts];
+insertOrUpdate2(sheet, newData);
+}
+
+
+//行の存在に応じて追加もしくは更新を行う関数
+function insertOrUpdate2(sheet, data) {
+var row = findRow2(sheet, data[0]);//日付比較の関数、行番号を受け取る
+if (row) { // 行が見つかったら更新
+sheet.getRange(row, 1, 1, data.length).setValues([data]);
+} else { // 行が見つからなかったら新しくデータを挿入
+sheet.appendRow(data);
+}
+}
+
+
+// 日付比較を行い、データがあれば行番号を返す関数
+function findRow2(sheet, date) {
+var searchDate = Utilities.formatDate(new Date(date), &#39;Asia/Tokyo&#39;,&#39;yyyy/MM/dd&#39;);
+var values = sheet.getDataRange().getValues();
+Logger.log(values + &quot;findRow&quot;);
+for (var i = values.length - 1; i &gt; 0; i--) {
+var dataDate = Utilities.formatDate(new Date(values[i][0]), &#39;Asia/Tokyo&#39;,&#39;yyyy/MM/dd&#39;);
+if (dataDate == searchDate) {
+return i + 1;
+}
+}
+return false;
+} </code></pre></div>
+                        <div class="d-flex position-relative bg-light mt-5 mb-5">
+                            <img src="https://yamatk12.net/wp-content/uploads/2021/05/instagram%E3%82%AD%E3%83%A3%E3%83%83%E3%83%81.jpg" alt="thumnail" class="flex-shrink-0 me-3" width="30%" height="30%">
+                            <div>
+                            <h5 class="mt-0">InstagramのインサイトデータをGoogle スプレッドシートに自動で登録する方法【API使用】</h5>
+
+                            <a href="https://yamatk12.net/instagram-to-googless/" class="stretched-link" target="_blank">リンク</a>
+                            </div>
+                        </div>
+
+                        <h4 class = "mt-5">「Contents_week」用のスクリプト</h4>
+                        <p>
+                        　このスクリプトでは、週間のリーチ数、インプレッション数を取得、保存できます。
+                        </p>
+
+<div class="hcb_wrap"><pre class="prism line-numbers lang-js" data-lang="JavaScript"><code> 
+function insightweek_reporting(){
+var date = new Date();
+var SSId = &#39;【スプレッドシートのURL】&#39;;
+var instragramID = &#39;【ビジネスID（数字）】&#39;;
+var username = &#39;【インスタのID】&#39;;
+var ACCESS_TOKEN = &quot;【アクセストークン】&quot;;
+getInsightweek(date,SSId,instragramID,username,ACCESS_TOKEN);
+}
+
+function getInsight(date,SSId,instragramID,username,ACCESS_TOKEN) {
+var mySS = SpreadsheetApp.openById(SSId);
+var sheetName = &#39;Contents&#39;;
+var sheet = mySS.getSheetByName(sheetName);
+var today = Utilities.formatDate(date, &#39;Tokyo/Asia&#39;, &#39;yyyy/MM/dd&#39;);
+var facebook_url = &#39;https://graph.facebook.com/v12.0/&#39;+ instragramID +&#39;/insights?metric=reach,impressions&period=week&access_token=&#39;+ ACCESS_TOKEN;;
+var encodedURI = encodeURI(facebook_url);
+var response = UrlFetchApp.fetch(encodedURI);
+var jsonData = JSON.parse(response);
+var reach_week = jsonData.data[0].values[1].value;
+var impressions_week = jsonData.data[1].values[1].value;
+var newData =[today,reach_week,impressions_week];
+insertOrUpdate3(sheet, newData)
+}
+
+function insertOrUpdate3(sheet, data) {
+var row = findRow2(sheet, data[0]);
+if (row) { 
+sheet.getRange(row, 1, 1, data.length).setValues([data]);
+} else { 
+sheet.appendRow(data);
+}
+}
+
+
+function findRow3(sheet, date) {
+var searchDate = Utilities.formatDate(new Date(date), &#39;Asia/Tokyo&#39;,&#39;yyyy/MM/dd&#39;);
+var values = sheet.getDataRange().getValues();
+Logger.log(values + &quot;findRow&quot;);
+for (var i = values.length - 1; i &gt; 0; i--) {
+var dataDate = Utilities.formatDate(new Date(values[i][0]), &#39;Asia/Tokyo&#39;,&#39;yyyy/MM/dd&#39;);
+if (dataDate == searchDate) {
+return i + 1;
+}
+}
+return false;
+} </code></pre></div>   
+
+                        <h4 class = "mt-5">「Country_Gender」用のスクリプト</h4>
+                        <p>
+                        　このスクリプトは、フォロワーの国、フォロワーの国コードと言語、フォロワーの性別と年齢の分布を出力します。
+                        </p>
+<div class="hcb_wrap"><pre class="prism line-numbers lang-js" data-lang="JavaScript"><code> 
+function getCountry_Gender() {
+var facebook_url = 'https://graph.facebook.com/v12.0/&#39;+ instragramID +&#39;/insights?metric=audience_country,audience_locale,audience_gender_age&period=lifetime&access_token=&#39;+ ACCESS_TOKEN;;
+var encodedURI = encodeURI(facebook_url);
+var response = UrlFetchApp.fetch(encodedURI);
+var jsonData = JSON.parse(response);
+// console.log(jsonData);
+
+var audience_country = jsonData.data[0].values[0].value; 
+var audience_locale = jsonData.data[1].values[0].value;
+var audience_gender_age = jsonData.data[2].values[0].value;
+console.log(audience_country);
+console.log(audience_locale);
+console.log(audience_gender_age);
+} </code></pre></div>
+
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <h2 id="anker3" id="anker3">実行結果</h2>
+                    <p>
+                    　「Follower」は「reporting」、「Contents」は「insight_reporting」、「Contents_week」は「insightweek_reporting」、「Country_Gender」は、「getCountry_Gender」を実行します。
+                    </p>
+                    <a href="images/スクリーンショット 2022-01-20 061256.png" data-lightbox="group"><img class = "img-fluid" src = "images/スクリーンショット 2022-01-20 061256.png"></a>
+                    <p>
+                    　「Follower」、「Contents」、「Contents_week」は、それぞれのスプレッドシートに結果が保存されます。
+                    </p>
+                    <a href="images/アートボード 4.png" data-lightbox="group"><img class="img-fluid" src = "images/アートボード 4.png"></a>
+                    <p>
+                    　「Country_Gender」は、GASの実行ログで結果を閲覧することができます。
+                    </p>
+                    <a href="images/アートボード 5.png" data-lightbox="group"><img class="img-fluid" src = "images/アートボード 5.png"></a>
+                </div>
+                <div class="mt-4">
+                    <h2 id="anker4">実装できなかったこと</h2>
+                    <ul class ="mt-4">
+                        <li>各投稿個別のインサイトデータ</li>
+                        <li>4番目のスクリプトとスプレッドシートの連携</li>
+                    </ul>
+                </div>
+                <div class="mt-5">
+                    <h2 id="anker5" id="anker5">参考サイト・参考文献</h2>
+                    <ul class ="mt-4">
+                        <li><a href ="https://navymobile.co.jp/instagram-graph-api" target="_blank">Instagram Graph APIの使い方とサイトに埋め込む方法 v5.0対応【2020年3月最新版】</a></li>
+                        <li><a href ="https://yamatk12.net/instagram-to-googless/#index_id0" target="_blank">4InstagramのインサイトデータをGoogle スプレッドシートに自動で登録する方法【API使用】</a></li>
+                        <li><a href ="https://youtu.be/w2r-Q2FabY0" target="_blank">【完全版】この動画1本でGoogle Apps Script（GAS）の基礎を習得！忙しい人のための速習コース</a></li>
+                        <li><a href ="https://developers.facebook.com/docs/instagram-api/reference" target="_blank">InstagramグラフAPI リファレンス</a></li>
+                        <li ><a href ="https://auto-worker.com/blog/?p=3760" target="_blank">GASでJSON形式データを読み込み、処理可能なオブジェクトや配列に変換する方法</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-none d-md-block col-md-3 offset-md-1">
+                <div class="sidebar_content mt-5">
+                    <div class="profile-card">
+                        <div class="profile-card__inner">
+                        <div class="profile-thumb">
+                          <img src="images/profile.png" alt="アイコン">
+                        </div>
+                        <div class="profile-content">
+                              <span class="profile-name">堀向希</span>
+                          <span class="profile-job">22卒</span>
+                          <span class="profile-intro">名古屋市立大学経済学部会計ファイナンス学科卒。河合勝彦ゼミには2020年4月～2022年3月まで在籍してました！<br><br><a href ="https://horikoki.github.io" target="_blank">ポートフォリオサイトはこちら！</a><br></span>
+                        </div>
+                          </div>
+                      </div>
+                </div>
+                <div class ="sidebar_fixed">
+                    <ol class="sample1">
+                        <p class="text-center lead">目次</p>
+                        <li><a href="#anker1">作成した理由</a></li>
+                        <li><a href="#anker2">作成方法</a></li>
+                          <ol  class="page-contents">
+                            <li><a href="#anker21">ビジネスアカウントの作成</a></li>
+                            <li><a href="#anker22">Facebookアプリの作成</a></li>
+                            <li><a href="#anker23">Google Apps Scriptでスクリプトを記述する</a></li>
+                          </ol>
+                        <li><a href="#anker3">実行結果</a></li>
+                        <li><a href="#anker4">実装できなかったこと</a></li>
+                        <li><a href="#anker5">参考サイト</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center pt-3 border-top">
+        &copy; horikoki
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+</body>
+
+</html>
